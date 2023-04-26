@@ -20,18 +20,21 @@
 	
 	</video>
 <script>
-	var video = document.querySelector("#videoElement");
+/*	var video = document.querySelector("#videoElement");
 	var hdConstraints = {
     video: {
+    deviceId: ,
     mandatory: {
         minWidth: 1280,
         minHeight: 720
     }
+
     }
 };
 
 if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia(hdConstraints)
+  navigator.mediaDevices.getUserMedia(hdConstraints,,
+)
     .then(function (stream) {
       video.srcObject = stream;
     })
@@ -40,7 +43,39 @@ if (navigator.mediaDevices.getUserMedia) {
     });
 }
 	
+*/
+	MediaStreamTrack.getSources(function(sourceInfos) {
+    var videoSource = null;
 
+    for (var i = 0; i != sourceInfos.length; ++i) {
+    var sourceInfo = sourceInfos[i];
+    
+    if (sourceInfo.kind === 'video') {
+        console.log(sourceInfo.id, sourceInfo.label || 'camera');
+
+        videoSource = sourceInfo.id;
+    } else {
+        console.log('Some other kind of source: ', sourceInfo);
+    }
+    }
+
+    sourceSelected(audioSource, videoSource);
+});
+
+function sourceSelected(videoSource) {
+    var constraints = {
+    
+    video: {
+	mandatory: {
+        minWidth: 1280,
+        minHeight: 720
+	}
+	optional: [{sourceId: videoSource}]
+    }
+    };
+
+    navigator.getUserMedia(constraints, successCallback, errorCallback);
+}
 </script>
 </body>
 </html>
