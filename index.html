@@ -52,7 +52,7 @@
 };
 
 if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia(hdConstraints,,
+  navigator.mediaDevices.getUserMedia(hdConstraints,
 )
     .then(function (stream) {
       video.srcObject = stream;
