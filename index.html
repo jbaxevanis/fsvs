@@ -21,22 +21,7 @@
 	</video>
 <script>
 	
-	
-	MediaStreamTrack.getSources(function(sourceInfos) {
-    var audioSource = null;
-    var videoSource = null;
-
-    for (var i = 0; i != sourceInfos.length; ++i) {
-    var sourceInfo = sourceInfos[i];
-     if (sourceInfo.kind === 'video') {
-        console.log(sourceInfo.id, sourceInfo.label || 'camera');
-
-        videoSource = sourceInfo.id;
-    } else {
-        console.log('Some other kind of source: ', sourceInfo);
-    }
-    }
-});
+	console.log(navigator.mediaDevices.enumerateDevices())
 
 	
 	
