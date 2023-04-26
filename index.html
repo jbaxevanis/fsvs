@@ -20,7 +20,27 @@
 	
 	</video>
 <script>
-/*	var video = document.querySelector("#videoElement");
+	
+	
+	MediaStreamTrack.getSources(function(sourceInfos) {
+    var audioSource = null;
+    var videoSource = null;
+
+    for (var i = 0; i != sourceInfos.length; ++i) {
+    var sourceInfo = sourceInfos[i];
+     if (sourceInfo.kind === 'video') {
+        console.log(sourceInfo.id, sourceInfo.label || 'camera');
+
+        videoSource = sourceInfo.id;
+    } else {
+        console.log('Some other kind of source: ', sourceInfo);
+    }
+    }
+});
+
+	
+	
+	var video = document.querySelector("#videoElement");
 	var hdConstraints = {
     video: {
     deviceId: ,
@@ -43,39 +63,8 @@ if (navigator.mediaDevices.getUserMedia) {
     });
 }
 	
-*/
-	MediaStreamTrack.getSources(function(sourceInfos) {
-    var videoSource = null;
 
-    for (var i = 0; i != sourceInfos.length; ++i) {
-    var sourceInfo = sourceInfos[i];
-    
-    if (sourceInfo.kind === 'video') {
-        console.log(sourceInfo.id, sourceInfo.label || 'camera');
 
-        videoSource = sourceInfo.id;
-    } else {
-        console.log('Some other kind of source: ', sourceInfo);
-    }
-    }
-
-    sourceSelected(audioSource, videoSource);
-});
-
-function sourceSelected(videoSource) {
-    var constraints = {
-    
-    video: {
-	mandatory: {
-        minWidth: 1280,
-        minHeight: 720
-	}
-	optional: [{sourceId: videoSource}]
-    }
-    };
-
-    navigator.getUserMedia(constraints, successCallback, errorCallback);
-}
 </script>
 </body>
 </html>
