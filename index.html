@@ -14,13 +14,13 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
     <meta itemprop="description" content="Client-side WebRTC code samples">
     <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
-    <meta itemprop="name" content="WebRTC code samples">
+    <meta itemprop="name" content="XE-Board">
     <meta name="mobile-web-app-capable" content="yes">
     <meta id="theme-color" name="theme-color" content="#ffffff">
 
     <base target="_blank">
 
-    <title>Select audio and video sources</title>
+    <title>Select Camlink 4k from the menu below</title>
 
     <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
@@ -55,28 +55,14 @@
     <p><b>Note:</b> without permission, the browser will restrict the available devices to at most one per type.</p>
 
     <div class="select">
-        <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
-    </div>
-
-    <div class="select">
-        <label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
-    </div>
-
-    <div class="select">
         <label for="videoSource">Video source: </label><select id="videoSource"></select>
     </div>
 
     <video id="video" playsinline autoplay></video>
-
-    <p><b>Note:</b> If you hear a reverb sound your microphone is picking up the output of your
-        speakers/headset, lower the volume and/or move the microphone further away from your speakers/headset.</p>
-
-    <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/devices/input-output"
-       title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 </div>
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="js/main.js" async></script>
+<script src="main.js" async></script>
 
 <script src="../../../js/lib/ga.js"></script>
 </body>
