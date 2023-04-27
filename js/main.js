@@ -1,4 +1,3 @@
-
 /*
 *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
 *
@@ -10,13 +9,10 @@
 'use strict';
 
 const videoElement = document.querySelector('video');
-/*const audioInputSelect = document.querySelector('select#audioSource');
-const audioOutputSelect = document.querySelector('select#audioOutput');
-*/
-const videoSelect = document.querySelector('select#videoSource');
-const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
 
-audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+const videoSelect = document.querySelector('select#videoSource');
+const selectors = [videoSelect];
+
 
 function gotDevices(deviceInfos) {
   // Handles being called several times to update labels. Preserve values.
@@ -30,7 +26,7 @@ function gotDevices(deviceInfos) {
     const deviceInfo = deviceInfos[i];
     const option = document.createElement('option');
     option.value = deviceInfo.deviceId;
-    if (deviceInfo.kind === 'videoinput') {
+   if (deviceInfo.kind === 'videoinput') {
       option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
       videoSelect.appendChild(option);
     } else {
@@ -46,26 +42,6 @@ function gotDevices(deviceInfos) {
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
-// Attach audio output device to video element using device/sink ID.
-function attachSinkId(element, sinkId) {
-  if (typeof element.sinkId !== 'undefined') {
-    element.setSinkId(sinkId)
-        .then(() => {
-          console.log(`Success, audio output device attached: ${sinkId}`);
-        })
-        .catch(error => {
-          let errorMessage = error;
-          if (error.name === 'SecurityError') {
-            errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
-          }
-          console.error(errorMessage);
-          // Jump back to first output device in the list as it's the default.
-          audioOutputSelect.selectedIndex = 0;
-        });
-  } else {
-    console.warn('Browser does not support output device selection.');
-  }
-}
 
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
@@ -84,6 +60,7 @@ function start() {
       track.stop();
     });
   }
+
   const videoSource = videoSelect.value;
   const constraints = {
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
