@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<!--
- *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
- *
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree.
--->
+
 <html>
 <head>
 
@@ -14,45 +8,53 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
     <meta itemprop="description" content="Client-side WebRTC code samples">
     <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
-    <meta itemprop="name" content="XE-Board">
+    <meta itemprop="name" content="WebRTC code samples">
     <meta name="mobile-web-app-capable" content="yes">
     <meta id="theme-color" name="theme-color" content="#ffffff">
 
     <base target="_blank">
 
-    <title>XE-Board</title>
+    <title>FullScreenVideoSource</title>
 
     <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../../../css/main.css">
 
     <style>
-        div.select {
-            display: inline-block;
-            margin: 0 0 1em 0;
+        div {
+            display:block;
+            text-align:center;
+            margin:auto;
+            
         }
 
-        p.small {
-            font-size: 0.7em;
-        }
+       
 
         label {
-            width: 12em;
-            display: inline-block;
+            display:block;
+          text-align:center;
+                 
         }
+    
+       #video {
+         display:block;
+         height:95vh;
+         text-align:center;
+         margin:auto
+   
+      }
     </style>
 
 </head>
 
 <body>
-<div id="container">
-
     <div class="select">
-        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+        <label for="videoSource">Video source: (hint: Smartboard display is Camlink 4k)</label><select id="videoSource"></select>
     </div>
 
-    <video id="video" playsinline autoplay></video>
-</div>
+    <div class="preview">
+      <video id="video" playsinline autoplay></video>
+  </div>
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="js/main.js" async></script>
@@ -60,3 +62,5 @@
 <script src="../../../js/lib/ga.js"></script>
 </body>
 </html>
+
+
